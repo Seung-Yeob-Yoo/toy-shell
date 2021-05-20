@@ -1,12 +1,19 @@
 # toy-shell
-Modified or added implement
-1. add 'exit'command
-=> 
+
+1. add 'exit' command
+=> terminate the process
 
 2. upgrade command line prompt
-=>
+=> showing user, host, cwd
 
-3. color string
-=> "프로그램 종료"'s color is red.  
+3. colored string
+=> to distinguish
+
+4. add 'ls' command
+=> listing file names in cwd
+
+5. add 'pwd' command
+=> printing working directory
+
 
 My OS environment : WSL2

@@ -11,7 +11,7 @@
 #define MAX_LEN_LINE    100
 #define LEN_HOSTNAME	30
 
-int main(void)
+int main(int argc, char *argv[], char *envp[])
 {
     char command[MAX_LEN_LINE];
     char *args[] = {command, NULL};
@@ -31,7 +31,7 @@ int main(void)
 
     	gethostname(hostname, LEN_HOSTNAME);
 
-        printf("%s@%s:%s$ ",getpwuid(getuid())->pw_name,hostname,buf);
+        printf("\033[1;32m%s@%s\033[0m:\033[1;34m%s\033[0m$ ",getpwuid(getuid())->pw_name,hostname,buf);
 	
 	s = fgets(command, MAX_LEN_LINE, stdin);
 
@@ -51,19 +51,24 @@ int main(void)
 
 		getcwd(cwd,255);
 
-		if ((dir=opendir(buf))==NULL)
+		if ((dir=opendir(cwd))==NULL)
 		{
 				printf("디렉토리 에러 발생!");
 				exit(1);
 		}
 
-		while((entry=readdir(buf)) != NULL){
-		printf("%s\n",entry->d_name);
+		while((entry=readdir(dir)) != NULL){
+		printf("\033[1;33m%s\n\033[0m",entry->d_name);
 		
 		}
 
 		free(cwd);
 		closedir(dir);
+	}
+
+	// pwd 구현
+	if (strcmp(command,"pwd\n")==0){
+		printf("%s\n",buf);
 	}
 
 
