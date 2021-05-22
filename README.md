@@ -17,3 +17,5 @@
 
 
 My OS environment : WSL2
+
+자동차IT융합학과 20173414 유승엽
